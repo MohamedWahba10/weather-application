@@ -1,0 +1,81 @@
+body {
+    background-color:#24353f;
+  }
+
+  .card {
+    background-color:#24353f;
+  }
+
+  h1{
+   color: #17a2b8;
+  }
+
+  .btn{
+    color: #17a2b8;
+    border-color: #17a2b8 ;
+  }
+  .btn:hover {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+
+  #name .form-control{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+
+  #name .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.623);
+  }
+
+  #password {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+  #password::placeholder {
+    color: rgba(255, 255, 255, 0.623);
+  }
+
+  #email {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+  #email::placeholder {
+    color: rgba(255, 255, 255, 0.623);
+  }
+
+
+
+  .card {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+  }
+
+  .group {
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+#LightBoxContainer {
+
+  background-color:#24353f;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50; /* Navbar background color */
+  padding: 10px 20px;
+}
+
+.navbar-title {
+  color: white;
+  font-size: 24px;
+}

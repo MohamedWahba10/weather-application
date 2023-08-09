@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Login System</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="css/all.min.css">
+
+</head>
+
+
+<body>
+
+  <div class="container mt-5" style="max-width:55rem;">
+    <div class="card ">
+
+      <h1 class="text-center mt-5 ">Smart Login System</h1>
+
+      <div class="card-body">
+        <div class="form-group ms-4 me-4 mb-4 d-none " id="name">
+
+          <input type="text" class="form-control " id="username" placeholder="Enter your name">
+        </div>
+
+
+        <div class="form-group ms-4 me-4">
+
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+
+        <div class="form-group ms-4 me-4">
+
+          <input type="password" class="form-control mt-4 " id="password" placeholder="Password">
+        </div>
+        <p id="alertinputs"  class="text-center text-danger mt-3 d-none">incorrect email or password</p>
+        <p id="emptyinputs"  class="text-center text-danger mt-3 d-none">All inputs are required</p>
+        <p id="Succesinputs"  class="text-center text-success mt-3 d-none">Succes</p>
+        <div class="text-center ms-4 me-4">
+          <button type="submit" class="btn w-100 mt-4" id="Loginbtn">Login</button>
+        </div>
+        <div class="text-center ms-4 me-4">
+          <button type="submit" class="btn w-100 mt-3 d-none " id="Signupbtn">Sign UP</button>
+        </div>
+       
+        <div class="text-center mt-3 mb-5">
+          <span style="color: #ffffff;">Don’t have an account? </span>
+         
+          <button type="submit" id="signup" class="bg-none"
+            style="border: none; background: none; padding: 0; color: #ffffff; text-decoration: none; cursor: pointer;">
+            Sign Up </button>
+
+            <button type="submit" id="signin" class="bg-none d-none"
+            style="border: none; background: none; padding: 0; color: #ffffff; text-decoration: none; cursor: pointer;">
+            Sign in </button>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="LightBoxContainer"  class="d-none">
+    <div class="navbar">
+      <div class="navbar-title">Smart Login</div>
+      <button id="SignOut" class="signout-button">Sign Out</button>
+    </div>
+  <div class="container my-5 text-center h-100 d-flex align-items-center">
+    <div class="group m-auto w-75 p-5">
+        <h1 id="user-welcome"> </h1>
+    </div>
+</div>
+</div>
+  <script src="js/main.js"></script>
+
+
+
+</body>
+
+</html>
