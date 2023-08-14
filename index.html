@@ -3,7 +3,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Login System</title>
+<title>Weather app</title>
 
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -16,64 +16,159 @@
 
 <body>
 
-  <div class="container mt-5" style="max-width:55rem;">
-    <div class="card ">
+  <!----------------- N A V B A R    S E C T I O N------------------------------------------------>
 
-      <h1 class="text-center mt-5 ">Smart Login System</h1>
+  <nav class="navbar navbar-expand-lg  ">
+    <div class="container-fluid d-flex justify-content-around mt-5 mb-5">
+      <div class="d-flex ">
+        
+        <img class="logo-image" src="images/logo@2x.png" alt="" id="logo_image">
 
-      <div class="card-body">
-        <div class="form-group ms-4 me-4 mb-4 d-none " id="name">
-
-          <input type="text" class="form-control " id="username" placeholder="Enter your name">
+        <div class="logo-type ms-3">
+          <h1 class="site-title text-white">Weather</h1>
+          <small class="site-description text-white">tagline goes here</small>
         </div>
+      </div>
 
+      <div class="navbar-nav flex-row justify-content-end ">
+        <a class="nav-link text-primary active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">News</a>
+        <a class="nav-link" href="#">live camera</a>
+        <a class="nav-link" href="#">photos</a>
+        <a class="nav-link" href="#">contact</a>
 
-        <div class="form-group ms-4 me-4">
+      </div>
+    </div>
+  </nav>
 
-          <input type="email" class="form-control" id="email" placeholder="Enter email">
-        </div>
-
-        <div class="form-group ms-4 me-4">
-
-          <input type="password" class="form-control mt-4 " id="password" placeholder="Password">
-        </div>
-        <p id="alertinputs"  class="text-center text-danger mt-3 d-none">incorrect email or password</p>
-        <p id="emptyinputs"  class="text-center text-danger mt-3 d-none">All inputs are required</p>
-        <p id="Succesinputs"  class="text-center text-success mt-3 d-none">Succes</p>
-        <div class="text-center ms-4 me-4">
-          <button type="submit" class="btn w-100 mt-4" id="Loginbtn">Login</button>
-        </div>
-        <div class="text-center ms-4 me-4">
-          <button type="submit" class="btn w-100 mt-3 d-none " id="Signupbtn">Sign UP</button>
-        </div>
-       
-        <div class="text-center mt-3 mb-5">
-          <span style="color: #ffffff;">Don’t have an account? </span>
-         
-          <button type="submit" id="signup" class="bg-none"
-            style="border: none; background: none; padding: 0; color: #ffffff; text-decoration: none; cursor: pointer;">
-            Sign Up </button>
-
-            <button type="submit" id="signin" class="bg-none d-none"
-            style="border: none; background: none; padding: 0; color: #ffffff; text-decoration: none; cursor: pointer;">
-            Sign in </button>
-           
+  <div class="position-relative">
+    <div class="container z-1 position-absolute top-50 start-50 translate-middle">
+      <div class="row">
+        <div class="col-md-12">
+          <form class="find-location">
+            <input type="text" class="col-md-12 rounded-5 position-relative p-3 text-white" placeholder="Find your location..."
+              id="search">
+            <input type="button"
+              class=" text-center rounded-5 position-absolute bg-primary text-white border-0  top-50 end-0 me-3 translate-middle-y  "
+              value="Find" id="submit">
+          </form>
         </div>
       </div>
     </div>
+
+    <div class="section-img">
+
+    </div>
   </div>
 
-  <div id="LightBoxContainer"  class="d-none">
-    <div class="navbar">
-      <div class="navbar-title">Smart Login</div>
-      <button id="SignOut" class="signout-button">Sign Out</button>
+  
+  <div class="temp-bg ">
+
+
+
+  </div>
+
+  <div class="forcats-table z-1  ">
+    <div class="container ">
+      <div class="row">
+
+        <div class="col-md-4 today">
+          
+            <div class="forecast-header d-flex justify-content-between" id="today">
+            <div id="day-of-week" style="color: #BFC1C8;" class="day">Saturday</div>
+            <div id="date" style="color: #BFC1C8;" class=" date">12August</div>
+            </div> <!-- .forecast-header -->
+            <hr style="color: black;">
+            <div class="forecast-content" id="current">
+            <div id="country" style="color: #BFC1C8; font-size: 30px;" class="location m-3">cairo</div>
+            <div class="degree m-3 d-flex">
+              <div class="num" id="temperature">
+                <span id="temperature-value">32</span><sup>o</sup>C
+            </div>
+            
+
+              
+                <div class="forecast-icon mt-4 ms-5">
+                    <img id="forecast-icon" src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="" width="90">
+                </div>	
+            
+            </div>
+            <div id="text" class="custom m-3 text-primary">Sunny</div>
+
+            <span  style="color: #BFC1C8;" class="m-2 p-1"><img src="images/icon-umberella.png" alt="" width="21" height="21" > 20%</span>
+                        <span id="kph" style="color: #BFC1C8;" class="m-2 p-1"><img src="images/icon-wind.png" alt="" width="23" height="21"> 18 km/h</span>
+                        <span style="color: #BFC1C8;" class="m-2 p-1"><img src="images/icon-compass.png" alt="" width="21" height="21"> East</span>
+            </div>
+        
+
+        </div>
+        <div class="col-md-4 tomorow text-center">
+          <div class="forecast-header">
+            <div id="tomorow" style="color: #BFC1C8;" class="day ">Sunday</div>
+        </div>
+        <hr style="color: black;">
+        <div class="forecast-content">
+          <div class="forecast-icon m-4">
+              <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="" width="48">
+          </div>
+          <div id="temperature-tomorrow" style="font-size: 24px; " class="degree fw-bold text-white ">39.8<sup>o</sup>C</div>
+          <smallstyle="font-size: 15px; >24.4<sup>o</sup></small>
+          <div class="custom text-primary">Sunny</div>
+      </div>
+        </div>
+        <div class="col-md-4 text-center aftertomorrow">
+
+          <div class="forecast-header">
+            <div id="aftertomorow" style="color: #BFC1C8;" class="day ">Sunday</div>
+        </div>
+        <hr style="color: black;">
+        <div class="forecast-content">
+          <div class="forecast-icon m-4">
+              <img src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="" width="48">
+          </div>
+          <div style="font-size: 24px; " class="degree fw-bold text-white ">39.8<sup>o</sup>C</div>
+          <smallstyle="font-size: 15px; >24.4<sup>o</sup></small>
+          <div class="custom text-primary">Sunny</div>
+      </div>
+        </div>
+
+      </div>
+
     </div>
-  <div class="container my-5 text-center h-100 d-flex align-items-center">
-    <div class="group m-auto w-75 p-5">
-        <h1 id="user-welcome"> </h1>
+
+  </div>
+
+  <section class="site-footer">
+    <div class="container">
+      <div class="row d-flex">
+        <div class=" form col-md-8 ">
+          <input id="email" class="p-3 w-75 rounded-5 " type="text" placeholder="Enter your email to subscribe...">
+          <input id="subscribe" class="rounded-5 p-2 bg-primary text-white border-0 " type="submit" value="Subscribe">
+        </div>
+
+        <div class="col-md-3 col-md-offset-1">
+          <div class="social-links">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook fs-3"></i></a>
+            <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter fs-3"></i></a>
+            <a href="https://plus.google.com/" target="_blank"><i class="fab fa-google-plus fs-3"></i></a>
+            <a href="https://www.pinterest.com/" target="_blank"><i class="fab fa-pinterest fs-3"></i></a>
+          </div>
+
+        </div>
+      </div>
+      <p class="colophon text-white mt-3">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
     </div>
-</div>
-</div>
+
+
+
+    </div>
+
+  </section>
+
+
+
+
+
   <script src="js/main.js"></script>
 
 

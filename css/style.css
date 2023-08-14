@@ -1,81 +1,129 @@
-body {
-    background-color:#24353f;
-  }
+body{
 
-  .card {
-    background-color:#24353f;
-  }
-
-  h1{
-   color: #17a2b8;
-  }
-
-  .btn{
-    color: #17a2b8;
-    border-color: #17a2b8 ;
-  }
-  .btn:hover {
-    color: #fff;
-    background-color: #17a2b8;
-    border-color: #17a2b8;
-  }
-
-  #name .form-control{
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-  }
-
-  #name .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.623);
-  }
-
-  #password {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-  }
-  #password::placeholder {
-    color: rgba(255, 255, 255, 0.623);
-  }
-
-  #email {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-  }
-  #email::placeholder {
-    color: rgba(255, 255, 255, 0.623);
-  }
-
-
-
-  .card {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-  }
-
-  .group {
-    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+  background-color: #262936;
 }
-#LightBoxContainer {
-
-  background-color:#24353f;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2c3e50; /* Navbar background color */
-  padding: 10px 20px;
+
+  background-color: #19252c;
 }
 
-.navbar-title {
-  color: white;
-  font-size: 24px;
+
+
+.logo-image {
+  width: 80px;
+  /* Adjust the desired width */
+  height: auto;
+  /* Maintain aspect ratio */
 }
+
+.site-title {
+
+
+  font-size: 1rem;
+}
+
+.site-description {
+
+  font-size: 0.7rem;
+}
+
+.nav-link {
+  border-radius: 20px;
+  display: inline-block;
+  padding: 5px 10px;
+  margin-right: 10px;
+  color: white;
+  transition: border-color 0.5s;
+  /* Adding a transition effect */
+}
+
+.nav-link:hover {
+  color: white;
+  border: 2px solid blue;
+  /* Adding border on hover, but excluding the .text-primary class */
+}
+.temp-bg{
+
+  background-color: #19252c;
+
+  height: 20rem;
+}
+
+#submit {
+
+  width: 6rem;
+  height: 3rem;
+  
+}
+
+#search {
+
+  background-color: #19252c;
+
+}
+
+.site-footer {
+  background: #262936;
+  padding: 50px 0;
+}
+
+#email {
+
+  background-color: #19252c;
+
+}
+
+
+.form {
+  position: relative;
+
+}
+
+#subscribe {
+
+
+  position: absolute;
+  left: 64%;
+  bottom: 20%;
+  
+}
+.num{
+
+  font-size: 90px;
+  color: white;
+  font-weight: 700;
+}
+.today{
+
+  background-color: #262936;
+}
+
+.tomorow {
+
+  background-color: #19252c;
+}
+.aftertomorrow{
+
+  background-color: #262936;
+}
+
+.section-img {
+  background-image: url(../images/banner.png);
+  background-size: cover;
+  background-position: center;
+  height: 45vh;
+  /* Sets the height to 25% of the viewport height */
+  position: relative;
+}
+
+.forcats-table {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 60%);
+  z-index: 1;
+  width: 100%; /* Match the width of .section-img */
+  height: 100%; /* Match the height of .section-img */
+  /* Other styles you already have */
+}
+

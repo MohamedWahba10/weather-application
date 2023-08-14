@@ -1,138 +1,86 @@
-let signup = document.querySelector("#signup");
-let signin = document.querySelector("#signin");
-let name = document.querySelector("#name");
-let Loginbtn = document.querySelector("#Loginbtn");
-let Signupbtn = document.querySelector("#Signupbtn");
-let LightBoxContainer = document.querySelector("#LightBoxContainer");
-let alertinputs = document.querySelector("#alertinputs")
-const userWelcomeEle = document.getElementById("user-welcome");
-let Succesinputs=document.querySelector("#Succesinputs");
-let email = document.querySelector("#email");
-let password = document.querySelector("#password");
-let username = document.querySelector("#username");
-let SignOutbtn=document.querySelector("#SignOut");
-let InformationsList = [];
+let search = document.querySelector("#search");
 
+search.addEventListener("input", async function () {
+    const inputValue = search.value;
 
+    let result = await fetch(`http://api.weatherapi.com/v1/search.json?key=ca1cb85950cf44a695b154648231208&q=${inputValue}`);
+    let finalresult = await result.json();
 
-
-const savedInformations = localStorage.getItem("informationsList");
-if (savedInformations) {
-    InformationsList = JSON.parse(savedInformations);
-}
-
-
-
-Signupbtn.addEventListener("click", function () {
-
-
-
-    if (email.value.trim() === "" || password.value.trim() === "") { // Handle the case where either email or password input is empty
-
-        emptyinputs.classList.replace("d-none", "d-block");
-        return;
-    } else {
-        Succesinputs.classList.replace("d-none", "d-block");
-
-    
-    
-    let Informations = {
-        username: username.value,
-        email: email.value,
-        password: password.value
-
-
-    }
-
-    InformationsList.push(Informations);
-
-    clear();
-
-    localStorage.setItem("informationsList", JSON.stringify(InformationsList));
-}
-})
-
-Loginbtn.addEventListener("click", function () {
-
-    if (email.value.trim() === "" || password.value.trim() === "") { // Handle the case where either email or password input is empty
-
-        emptyinputs.classList.replace("d-none", "d-block");
-        return;
-    }
-   
-    for (let i = 0; i < InformationsList.length; i++) {
-
-
-        if (email.value == InformationsList[i].email && password.value == InformationsList[i].password) {
-
-            LightBoxContainer.classList.replace("d-none", "d-block");
-            userWelcomeEle.innerHTML = `Welcome ${username.value}`
-
-        } else {
-
-            alertinputs.classList.replace("d-none", "d-block");
-
-        }
-
-    }
-    localStorage.setItem("informationsList", JSON.stringify(InformationsList));
-})
-
-
-
-
-function clear() {
-    
-    email.value = ""
-    password.value = ""
-}
-
-
-signup.addEventListener("click", function () {
-
-
-    name.classList.replace("d-none", "d-block");
-    Loginbtn.classList.add("d-none");
-    Signupbtn.classList.replace("d-none", "d-block");
-    signin.classList.remove("d-none");
-    signup.classList.add("d-none");
-
+    await Display(finalresult);
 });
 
-signin.addEventListener("click", function () {
+updateDayAndDate();
+async function fetchData(string_input) {
+    let result = await fetch(`http://api.weatherapi.com/v1/current.json?key=ca1cb85950cf44a695b154648231208&q=${string_input}&aqi=no`);
+    let finalresult = await result.json();
+
+    return finalresult;
+}
+
+async function geticon(string_input) {
+    let data = await fetchData(string_input);
+    return data.current.condition.icon;
+}
+
+async function gettext(string_input) {
+    let data = await fetchData(string_input);
+    return data.current.condition.text;
+}
+
+async function getTemp(string_input) {
+    let data = await fetchData(string_input);
+    return data.current.temp_c;
+}
+async function getwindspeed(string_input) {
 
 
-    name.classList.replace("d-block", "d-none");
-    Loginbtn.classList.replace("d-none", "d-block");
-    Signupbtn.classList.replace("d-block", "d-none");
-    signin.classList.add("d-none");
-    signup.classList.remove("d-none");
-    Succesinputs.classList.add("d-none");
-    emptyinputs.classList.add("d-none");
+    let data = await fetchData(string_input);
+    return data.current.wind_kph;
+}
 
-});
+async function getTemperatureForTomorrow(string_input) {
+    const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=ca1cb85950cf44a695b154648231208&q=${string_input}&days=7`);
+    const data = await response.json();
 
-SignOutbtn.addEventListener("click",function(){
-
-    localStorage.removeItem("informationsList");
-
-    LightBoxContainer.classList.add("d-none");
-
-}) 
+    // Assuming forecast data for tomorrow is at index 1 (1 day ahead)
+    const temperatureTomorrow = data.forecast.forecastday[1].day.avgtemp_c;
+    return temperatureTomorrow;
+}
 
 
 
+async function Display(finalresult) {
+    let blackbox = `
+        <div id="country" style="color: #BFC1C8; font-size: 30px;" class="location m-3">
+            ${finalresult[0].name}, ${finalresult[0].country}
+        </div>`;
+
+    document.getElementById("country").innerHTML = blackbox;
+    document.getElementById("temperature-value").innerHTML = await getTemp(finalresult[0].name);
+    document.querySelector("#forecast-icon").src = "http:" + await geticon(finalresult[0].name);
+    document.getElementById("text").innerHTML = await gettext(finalresult[0].name);
+    document.getElementById("kph").innerHTML = await getwindspeed(finalresult[0].name) +" km/hr"
+    document.getElementById("temperature-tomorrow").innerHTML = await getTemperatureForTomorrow(finalresult[0].name) + "°C";
+}
+
+
+async function updateDayAndDate() {
+    const now = new Date();
+    const dayOfWeekNumber = now.getDay();
+    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const dayName = daysOfWeek[dayOfWeekNumber];
+    const nextDayName = daysOfWeek[dayOfWeekNumber + 1];
+    const afterNextDayName = daysOfWeek[dayOfWeekNumber + 2];
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const monthName = monthNames[now.getMonth()];
+
+    const dayOfMonth = now.getDate();
+
+    document.getElementById("day-of-week").innerHTML = dayName;
+    document.getElementById("tomorow").innerHTML = nextDayName;
+    document.getElementById("aftertomorow").innerHTML = afterNextDayName;
+    document.getElementById("date").innerHTML = `${dayOfMonth} ${monthName}`;
+}
 
 
 
-// function ValidateEmail() {
-
-//     let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-
-//     if (regex.test(email.value) == false) {
-
-//         return false;
-//     }
-
-
-// }
